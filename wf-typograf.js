@@ -111,7 +111,7 @@ window.Wikify = function ( inputOrText ) {
 			}
 		}
 	}
-	
+
 	function processLink( link, left, right ) {
 		left = left.replace( /[ _\u00A0]+/g, ' ' ).trim();
 		if ( left.match( /^(?:Категория|Файл) ?:/ ) ) {
@@ -192,12 +192,12 @@ window.Wikify = function ( inputOrText ) {
 		r( /(\| *год *= *)(\d{4})[\u00A0 ]?(?:-{1,3}|—) ?(\d{4})/g, '$1$2—$3' );
 
 		r( /(\[\[[^\{\]|\n]+){{!}}([^\{\]|\n]+\]\])/g, '$1|$2' );
-		
+
 		if ( txt.indexOf( '{{НП' ) > -1 ) {
 			r( / *\| *(?:CoordAddon|ЯндексКарта)[^\|\}]+\n/g, '' );
 			r( / *\| *размер карты (?:страны|региона|района) *= *[^\|\}]+\n/g, '' );
 		}
-		
+
 		var i;
 		for ( i in window.wfPluginsT ) {
 			if ( window.wfPluginsT.hasOwnProperty( i ) ) {
@@ -404,7 +404,7 @@ window.Wikify = function ( inputOrText ) {
 		processText();
 		if ( $input ) {
 			r( /^[\n\r]+/, '' );
-			
+
 			$input.textSelection( 'setContents', txt );
 			if ( caretPosition ) {
 				$input.textSelection( 'setSelection', {
@@ -424,7 +424,7 @@ window.Wikify = function ( inputOrText ) {
 	}
 
 	// MAIN CODE
-	
+
 	// Check what's in the first parameter
 	var text;
 	var isInput;
@@ -448,7 +448,7 @@ window.Wikify = function ( inputOrText ) {
 	var caretPosition;
 	if ( $input ) {
 		$input.focus();
-		
+
 		caretPosition = $input.textSelection( 'getCaretPosition', { startAndEnd: true } );
 		if ( caretPosition ) {
 			var $CodeMirrorVscrollbar = $( '.CodeMirror-vscrollbar' );
