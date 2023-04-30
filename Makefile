@@ -3,13 +3,16 @@
 CURL ?= curl
 SED ?= sed
 
-all: wf-typograf.js
+WIKIFICATOR := wf.js
+TYPOGRAF := wf-typograf.js
+
+all: $(TYPOGRAF)
 
 clean:
-	$(RM) wf.js  wf-typograf.js
+	$(RM) $(WIKIFICATOR) $(TYPOGRAF)
 
-wf.js:
+$(WIKIFICATOR):
 	$(CURL) -L 'https://ru.wikipedia.org/wiki/MediaWiki:Gadget-wikificator.js?action=raw' > $@
 
-wf-typograf.js: patch.sed  pre.js  wf.js  post.js
+$(TYPOGRAF): patch.sed pre.js $(WIKIFICATOR) post.js
 	$(SED) -Ef $^ > $@ && chmod +x $@
