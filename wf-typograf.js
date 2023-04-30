@@ -301,7 +301,7 @@ window.Wikify = function ( inputOrText ) {
 
 		// Hyphens and en dashes to pretty dashes
 		r( /–/g, '-' ); // &ndash; -> hyphen
-		r( /(\s)-{1,3} /g, '$1— ' ); // hyphen -> &mdash;
+		r( /(\s)-{1,3}(?!\S)/g, '$1—' ); // hyphen -> &mdash; // PATCHED
 		r( /(\d)--(\d)/g, '$1—$2' ); // -> &mdash;
 		r( /(\s)-(\d)/g, '$1−$2' ); // hyphen -> minus
 
@@ -331,9 +331,9 @@ window.Wikify = function ( inputOrText ) {
 		r( /([IVX]{1,5}) ?(вв?\.)/g, '$1' + u + '$2' );
 
 		// Reductions
-		// r( /(Т|т)\.\s?е\./g, '$1о есть' );
-		// r( /(Т|т)\.\s?к\./g, '$1ак как' );
-		// r( /(В|в)\sт\. ?ч\./g, '$1 том числе' );
+		// r( /(Т|т)\.\s?е\./g, '$1о есть' ); // PATCHED
+		// r( /(Т|т)\.\s?к\./g, '$1ак как' ); // PATCHED
+		// r( /(В|в)\sт\. ?ч\./g, '$1 том числе' ); // PATCHED
 		r( /(И|и)\sт\.\s?д\./g, '$1' + u + 'т.' + u + 'д.' );
 		r( /(И|и)\sт\.\s?п\./g, '$1' + u + 'т.' + u + 'п.' );
 		r( /(Т|т)\.\s?н\./g, '$1.' + u + 'н.' );
