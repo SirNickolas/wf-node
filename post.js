@@ -42,6 +42,8 @@ window.wfPlugins.push((txt, r) => {
     r(/([?!.…,;:"—])\xA0/g, "$1 ");
     // Dash should always be preceded by a non-breaking space.
     r(/ —/g, "\xA0—");
+    // Dash at BOL should be followed by a narrow non-breaking space.
+    r(/^— /gm, "—\u202F");
     // If a line consists of only '#', '*', and ':', the Wikificator will append a space to it.
     r(/[ \xA0]+$/gm, "");
 });
