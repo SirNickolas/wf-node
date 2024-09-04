@@ -497,10 +497,10 @@ function registerWikificatorTool() {
 		label: strings.tooltip,
 		callback: Wikify,
 		classic: {
-			icon: '//upload.wikimedia.org/wikipedia/commons/0/06/Wikify-toolbutton.png',
+			icon: '//upload.wikimedia.org/wikipedia/commons/4/41/Wikificator_VE_icon.svg',
 		},
 		visual: {
-			icon: '//upload.wikimedia.org/wikipedia/commons/thumb/4/41/Wikificator_VE_icon.svg/20px-Wikificator_VE_icon.svg.png',
+			icon: '//upload.wikimedia.org/wikipedia/commons/4/41/Wikificator_VE_icon.svg',
 			modes: [ 'source' ],
 			addRightAway: true,
 		},
